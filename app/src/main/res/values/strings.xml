@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FoodAgregator</string>
+    <string name="Pizza">ПИЦЦА</string>
+    <string name="Susci">СУШИ</string>
+    <string name="Burger">БУРГЕРЫ</string>
+    <string name="drink">НАПИТКИ</string>
+    <string name="recent_news">Пеперонни</string>
+    <string name = "in_food">Пицца на тонком тесте с помидорами и колбасой</string>
+    <string name = "publish_date">24.10.19</string>
+</resources>
