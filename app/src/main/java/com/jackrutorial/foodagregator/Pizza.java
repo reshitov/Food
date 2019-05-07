@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -33,19 +37,44 @@ public class Pizza extends AppCompatActivity {
     }
     private void setInitialData(){
 
-        foods.add(new Food ("Греческий салат с курицей","salat","Греческий","Греческий",  R.drawable.lul));
-        foods.add(new Food ("Мясо", "Salat","Salat","Мясо", R.drawable.scale_600));
-        foods.add(new Food ("Пицца на толстом и тонком тесте, разные виды роллов", "Salat","Salat","Пицца и Суши", R.drawable.pizza));
-        foods.add(new Food ("Шашлык из баранины", "Salat","Salat","Шашлык", R.drawable.shashlik));
+        foods.add(new Food ("От 200 рублей","Греческий","Пепперони",  R.drawable.pepperonipeperoni));
+        foods.add(new Food ("От 350 рублей","Salat","Четыре сыра", R.drawable.quattro));
+        foods.add(new Food ("От 390 рублей", "Salat","Диабло", R.drawable.diablo));
+        foods.add(new Food ("От 450 рублей", "Salat","Маргарита", R.drawable.margaritamargarita));
     }
     public void setRecyclerList() { //************
         adapter.setOnClickListener(new DataAdapter.OnClickListener() {
             @Override
-            public void onClick(int position) {
-               //Toast.makeText(getBaseContext(),foods.get(position).getvName(),Toast.LENGTH_LONG).show();
+            public void onClick(Food food, int position) {
+                Bundle bundle = new Bundle();
                 Intent intent = new Intent(getBaseContext(),Information.class);
+                bundle.putSerializable(Information.FOOD_DATE, food);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
     }
+
+   /* @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView =(SearchView)searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }*/
 }

@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name ="colorPrimaryText">#050505</color>
+    <color name = "price">#808080</color>
+    <color name ="title">#050505</color>
 </resources>
