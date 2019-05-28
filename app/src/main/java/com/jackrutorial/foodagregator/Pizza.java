@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,16 +17,19 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pizza extends AppCompatActivity {
+public class Pizza extends AppCompatActivity   {
     RelativeLayout relativeLayout;
     CardView cardView;
     List<Food> foods = new ArrayList<>();
     DataAdapter adapter;
+    private Toolbar toolbar;
     public static final String FOOD_ID = "foodId";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pizza);
+       // toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
         setInitialData();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
         cardView = findViewById(R.id.card_view);
@@ -55,26 +59,34 @@ public class Pizza extends AppCompatActivity {
         });
     }
 
-   /* @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView =(SearchView)searchItem.getActionView();
+       // getMenuInflater().inflate(R.menu.example_menu,menu);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
+       // MenuItem menuItem = menu.findItem(R.id.action_search);
+       // SearchView searchView = (SearchView) menuItem.getActionView();
+       // searchView.setOnQueryTextListener(this);
         return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        /*newText = newText.toLowerCase();
+        List<Food> foodSearch = new ArrayList<>();
+        for(Food food : foods){
+            String name = food.getvTitle().toLowerCase();
+            if(name.contains(newText))
+                foods.add(food);
+        }
+
+        adapter.updateList(foodSearch);
+        return false;
     }*/
 }
+

@@ -3,6 +3,7 @@ package com.jackrutorial.foodagregator;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
+public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder>
+{
     private LayoutInflater inflater;
     private List<Food> foods;
     private List<Food> foodsFull;
@@ -23,7 +25,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     DataAdapter(Context context, List<Food> foods) {
         this.foods = foods;
         this.inflater = LayoutInflater.from(context);
-      //  foodsFull = new ArrayList<>(foods);
+        //  foodsFull = new ArrayList<>(foods);
     }
 
     @Override
@@ -76,44 +78,17 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public interface OnClickListener { //****
         void onClick(Food food, int position);
     }
-}
 
-   /* @Override
-    public Filter getFilter() {
-        return foodsFilter;
+    public void updateList(List<Food> newList){
+        foods = new ArrayList<>();
+        foods.addAll(newList);
+        notifyDataSetChanged();
+
     }
 
-    private Filter foodsFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<Food> filteredList = new ArrayList<>();
-
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(foodsFull);
-            } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-
-                for (Food item : foodsFull) {
-                    if (item.getvTitle().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(item);
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-
-            return results;
-        }
-
-            @Override
-            protected void publishResults (CharSequence constraint, FilterResults results){
-                foods.clear();
-                foods.addAll((List) results.values);
-                notifyDataSetChanged();
-
-            }
-        };
 
 
-    }*/
+
+
+    }
 

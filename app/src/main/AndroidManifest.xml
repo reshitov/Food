@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Pizza"></activity>
-        <activity android:name=".Information"></activity>
+        <activity android:name=".Information" android:parentActivityName=".Pizza"></activity>
     </application>
 
 </manifest>
